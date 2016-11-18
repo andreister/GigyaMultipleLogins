@@ -12,9 +12,12 @@ namespace GigyaMultipleLogins
 
             //register
             var regToken = client.InitRegistration().RegistrationToken;
+            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
             var uid = client.Register(user.Email, user.Password, regToken).UserId;
+            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
             client.FinalizeRegistration(regToken);
-            
+            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
+
             //try to login with wrong password
             var attempts = 10;
             for (int i = 0; i < attempts; i++)
